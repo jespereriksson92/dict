@@ -1,5 +1,5 @@
 import psycopg2
-
+#Connects to database
 def get_db_connection():
     conn = psycopg2.connect(
             user="postgres",
@@ -8,7 +8,7 @@ def get_db_connection():
             port="5432",
             database="dict")
     return conn
-
+# Lists all word and its translation
 def read_dict():
     conn = get_db_connection()
     cur = conn.cursor()
@@ -17,28 +17,28 @@ def read_dict():
     cur.close()
     conn.close()
     return rows
-
+#Adds a word and its translation
 def add_word(word, translation):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(f"INSERT INTO dictionary (word, translation) VALUES ('{word}', '{translation}');")
     cur.close()
     conn.close()
-
+#Deletes a word and its translation
 def delete_word(ID):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(f"DELETE FROM dictionary WHERE id = '{ID}';")
     cur.close()
     conn.close()
-
+#Commits anything not committed
 def save_dict():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("COMMIT;")
     cur.close()
     conn.close()
-
+#Does nothing functional for now
 def insert_word(word, translation):
     print (f"To insert {word} and its translation {translation}, use add instead!")
 
