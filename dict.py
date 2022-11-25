@@ -39,6 +39,10 @@ def save_dict():
     cur.close()
     conn.close()
 
+def insert_word(word, translation):
+    print (f"To insert {word} and its translation {translation}, use add instead!")
+
+
 while True: ## REPL - Read Execute Program Loop
     print("Welcome! To use this dictionary, use the commands list, add, delete or quit!")
     cmd = input("Command: ")
