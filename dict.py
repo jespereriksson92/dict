@@ -40,6 +40,7 @@ def save_dict():
     conn.close()
 
 while True: ## REPL - Read Execute Program Loop
+    print("Welcome! To use this dictionary, use the commands list, add, delete or quit!")
     cmd = input("Command: ")
     if cmd == "list":
         print(read_dict())
